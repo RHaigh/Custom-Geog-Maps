@@ -1,4 +1,4 @@
-# Custom-Geog-Maps
+# Custom-Geog-Maps-R
 A guide for analysts to quickly create customised maps in pdf or png format without requiring licensed mapping software. 
 
 Author: Richard Haigh
