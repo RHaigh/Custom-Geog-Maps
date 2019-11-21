@@ -19,7 +19,7 @@ that will aid them in creating customised maps. Use this if you wish for a pdf o
 geography level breakdown (be it LA, DZ or SPC) and can shade each geog area by a given variable such as population, wealth 
 or any other quantifiable numeric measurement. 
 
-You can use this with a nexisting dataset providing it has a breakdown of your chosen geography level. You must also have access
+You can use this with an existing dataset providing it has a breakdown of your chosen geography level. You must also have access
 to the software stated above. 
 
 Using this guide, you can quickly create ouptut such as this without using any licensed mapping software, such as QGIS or Arc:
