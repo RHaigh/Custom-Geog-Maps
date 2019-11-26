@@ -86,7 +86,7 @@ pal <- colorBin("YlOrRd", domain = dz_merged$SIMDrank, bins = bins)
 # Plot mean SIMD rank for each polygon in our datazone merged table.
 map <- leaflet(dz_merged) %>% 
   setView(-3.2008, 55.9452, 15) %>% # Here you control the initial viewpoint coordinates (We've set this one to Edinburgh city centre).
-  addProviderTiles("CartoDB.Positron", # This uplaods the background map using a standard open-source base.
+  addProviderTiles("CartoDB.Positron", # This uploads the background map using a standard open-source background base. Others are available. 
                    options= providerTileOptions(opacity = 0.99)) %>% 
   addPolygons(fillColor = ~pal(SIMDrank), # Here you enter your chosen var by column name.
               weight = 2,
