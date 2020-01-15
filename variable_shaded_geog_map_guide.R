@@ -41,7 +41,7 @@ SIMDrank <- qddata$results
 View(SIMDrank)
 
 # As you can see, we now have a dataframe listing the SIMD rank per datazone. Now we need map data.
-# Again, if you have the dataframe already as a csv or excel file, simply upload it at this point instead.
+# Again, if you have the desired boundaries as a shapefile within a geospatial DB, simply upload it at this point instead.
 
 ### Stage 02 - Collecting map geography polygons ###
 
