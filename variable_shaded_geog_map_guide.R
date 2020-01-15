@@ -153,3 +153,6 @@ map
 webshot::install_phantomjs() # Only required once.
 mapshot(map, file = "~/Desktop/R Code Examples/Rplot.png") 
 
+# Note that this is only necessary if you wish to automate pdf output. If you are content to simply produce a
+# .png file manually then you can do this using the RStudio GUI. 
+
