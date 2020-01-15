@@ -19,9 +19,14 @@ that will aid them in creating customised maps. Use this if you wish for a pdf o
 geography level breakdown (be it LA, DZ or SPC) and can shade each geog area by a given variable such as population, wealth 
 or any other quantifiable numeric measurement. 
 
-You can use this with an existing dataset providing it has a breakdown of your chosen geography level. You must also have access
-to the software stated above. 
+You can use this with an existing dataset providing it has a breakdown of your chosen geography level. You must also have access to the software stated above. 
 
 Using this guide, you can quickly create ouptut such as this without using any licensed mapping software, such as QGIS or Arc:
 
 ![Example simple output](./Rplot.png)
+
+You can edit the background tiles by altering your argument to the addProviderTiles() function within the larger leaflet function. A full list of available background tiles can be found at: http://leaflet-extras.github.io/leaflet-providers/preview/index.html
+
+For example, say we wanted to use the openStreetMaps background tiles, the code would change to addProviderTiles(provider$openStreetMap). Producing output like this: 
+
+![Example simple output](./Rplot2.png)
