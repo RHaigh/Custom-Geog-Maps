@@ -9,7 +9,7 @@ Written - R Desktop 3.5.2
 
 Environment: RStudio v1.2.1335
 
-Software Requirements: PhantomJS (available at https://phantomjs.org)
+Software Requirements: PhantomJS (available at https://phantomjs.org) - *optional
 
 Packages:
 SPARQL v1.16, tidyverse v1.2.1, leaflet v2.0.2, rgad v1,4-6, mapview v2.7.0, webshot v0.5.1
