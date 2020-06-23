@@ -11,7 +11,7 @@ library(webshot)
 # chosen geography level and the variable column you wish to map, then you may skip this stage. 
 # For the purposes of this tutorial, we will use SIMD ranking obtained from stats.gov SPARQL API:
 
-# The SPARQL API is a government end-point that lets you    uickly search and retrieve data from stats.gov 
+# The SPARQL API is a government end-point that lets you quickly search and retrieve data from stats.gov 
 query <- 'PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sdmx: <http://purl.org/linked-data/sdmx/2009/concept#>
@@ -54,7 +54,7 @@ View(SIMDrank)
 # Download this to your machine.
 
 # Note that if you wished you could also download the geodatabase that contains SPC or local authority level polygons.
-# These polygons simply draw out the area of each geography according to their geographic location. Thesea re large files with lots of x and y coordiantes that help mapping software draw these polygons. 
+# These polygons simply draw out the area of each geography according to their geographic location. These are large files with lots of x and y coordiantes that help mapping software draw these polygons. 
 
 # After downloading gdb, read in the appropriate 'layer'.
 dz_boundaries <- readOGR(dsn="~/Downloads/SG_DataZoneBdry_2011", layer="SG_DataZone_Bdry_2011")
