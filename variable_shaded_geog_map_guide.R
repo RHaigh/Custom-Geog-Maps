@@ -11,6 +11,7 @@ library(webshot)
 # chosen geography level and the variable column you wish to map, then you may skip this stage. 
 # For the purposes of this tutorial, we will use SIMD ranking obtained from stats.gov SPARQL API:
 
+# The SPARQL API is a government end-point that lets you    uickly search and retrieve data from stats.gov 
 query <- 'PREFIX qb: <http://purl.org/linked-data/cube#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX sdmx: <http://purl.org/linked-data/sdmx/2009/concept#>
@@ -40,8 +41,8 @@ SIMDrank <- qddata$results
 
 View(SIMDrank)
 
-# As you can see, we now have a dataframe listing the SIMD rank per datazone. Now we need map data.
-# Again, if you have the desired boundaries as a shapefile within a geospatial DB, simply upload it at this point instead.
+# As you can see, we now have a dataframe listing the SIMD rank per Scottish datazone. Now we need map data.
+# Again, if you have the desired boundaries as a shapefile within a geospatial DB, simply upload to your R environment it at this point instead.
 
 ### Stage 02 - Collecting map geography polygons ###
 
@@ -53,9 +54,9 @@ View(SIMDrank)
 # Download this to your machine.
 
 # Note that if you wished you could also download the geodatabase that contains SPC or local authority level polygons.
-# These polygons simply draw out the area of each geography according to their geographic location.
+# These polygons simply draw out the area of each geography according to their geographic location. Thesea re large files with lots of x and y coordiantes that help mapping software draw these polygons. 
 
-# After downloading gdb, read in appropriate layer.
+# After downloading gdb, read in the appropriate 'layer'.
 dz_boundaries <- readOGR(dsn="~/Downloads/SG_DataZoneBdry_2011", layer="SG_DataZone_Bdry_2011")
 
 # Convert easting and northing to lat and long (essential as leaflet cannot read easting and northings).
@@ -72,11 +73,12 @@ dz_boundaries <- spTransform(dz_boundaries, CRS(wgs84))
 dz_merged <- merge(dz_boundaries, SIMDrank, by.x = "Name", 
                    by.y = "dataZone", all.x = FALSE, duplicateGeoms = TRUE)
 
+
 ### Stage 03 - Put it all together in an interactive leaflet map ###
 
 # Leaflet will require several things to create our map:
 
-# 1. A colour palette and instructions on how often to change the shading.
+# 1. A colour palette and instructions on how often to change the shading of our DZ polygons.
 # 2. The argument telling it what variable value determines this shading.
 
 # Create bins and palette for mean SIMD rank - we will tell it to deepen the shade for every 500 increase.
@@ -88,7 +90,7 @@ map <- leaflet(dz_merged) %>%
   setView(-3.2008, 55.9452, 15) %>% # Here you control the initial viewpoint coordinates (We've set this one to Edinburgh city centre).
   addProviderTiles("CartoDB.Positron", # This uploads the background map using a standard open-source background base. Others are available. 
                    options= providerTileOptions(opacity = 0.99)) %>% 
-  addPolygons(fillColor = ~pal(SIMDrank), # Here you enter your chosen var by column name.
+  addPolygons(fillColor = ~pal(SIMDrank), # Here you enter your chosen variable to colour your polygons by column name.
               weight = 2,
               opacity = 1,
               color = "white",
@@ -106,7 +108,7 @@ map <- leaflet(dz_merged) %>%
 
 map
 
-# All works fine and shows every datazone in Scotland but this is bulky and extensive and takes forever to load.
+# All works fine and shows every datazone in Scotland but this is bulky and extensive and takes forever to load because it's drawing all the polygons in the shapefile.
 # What if we just want particular datazones?
 
 # If you want to look at a particular group of datazones, create a subset dataframe:
@@ -145,14 +147,13 @@ map <- leaflet(subset) %>%
 
 map
 
-# Now we have our desired map with shading to show our desired changes in a given variable.
-# Make sure to set the initial view to reflect what you want your output to be. This initial view
-# is what will be xported to pdf / png.
+# Now we have our desired map with shading to show our desired changes in a given variable. You could upload this to a shiny app or markdown document. 
+# Make sure to set the initial view to reflect what you want your output to be. This initial view is what will be exported to pdf / png.
 
 ### Stage 04 - Export these maps as pdf / png using mapview package ###
 webshot::install_phantomjs() # Only required once.
 mapshot(map, file = "~/Desktop/R Code Examples/Rplot.png") 
 
 # Note that this is only necessary if you wish to automate pdf output. If you are content to simply produce a
-# .png file manually then you can do this using the RStudio GUI. 
+# .png file manually then you can do this using the RStudio GUI. Simply click on the export button in your RStudio display window. 
 
