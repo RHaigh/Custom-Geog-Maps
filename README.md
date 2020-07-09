@@ -1,5 +1,5 @@
 # Custom Geography Maps in R
-A guide for analysts to quickly create customised maps in pdf or png format without requiring licensed mapping software. 
+A guide for analysts to quickly create customised maps in pdf or png format without requiring licensed mapping software using the rgdal and leaflet packages. 
 
 Author: Richard Haigh
 
