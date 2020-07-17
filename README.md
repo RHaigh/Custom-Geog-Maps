@@ -25,14 +25,4 @@ Using this guide, you can quickly create ouptut such as this without using any l
 
 ![Example simple output](./Rplot.png)
 
-# Customising Output Further
-
-You can edit the background tiles by altering your argument to the addProviderTiles() function within the larger leaflet function. A full list of available background tiles can be found at: http://leaflet-extras.github.io/leaflet-providers/preview/index.html
-
-For example, say we wanted to use the openStreetMaps background tiles, the code would change to addProviderTiles(provider$openStreetMap). 
-
-The colour palette used for your polygon shading by bin can be one of many options found at the R colour brewer guide: https://www.nceas.ucsb.edu/~frazier/RSpatialGuides/colorPaletteCheatsheet.pdf. Note that your chosen palette must have the same number of desired bins or it will run out of shades! So if we wanted to use shades of blue, we would change our code to pal <- colorBin("blues", domain = dz_merged$SIMDrank, bins = bins)
-
-How would our output look with these changes to our code? 
-
 ![Example simple output](./Rplot2.png)
